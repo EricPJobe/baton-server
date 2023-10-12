@@ -1,0 +1,59 @@
+{
+  "name": "baton-server",
+  "version": "1.0.0",
+  "license": "MIT",
+  "author": "Eric P. Jobe",
+  "private": true,
+  "type": "module",
+  "exports": "./dist/index.js",
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run prettier:check"
+    }
+  },
+  "scripts": {
+    "dev": "nodemon",
+    "build": "tsc",
+    "start": "node --experimental-specifier-resolution=node dist/index.js",
+    "lint": "eslint src --ext ts --report-unused-disable-directives --max-warnings 0",
+    "prettier:check": "prettier --config .prettierrc --check \"src/**/*.{ts}\"",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "*.{js,ts}": [
+      "eslint --fix",
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "helmet": "^7.0.0",
+    "morgan": "^1.10.0",
+    "pg": "^8.11.3",
+    "socket.io": "^4.7.2"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.14",
+    "@types/express": "^4.17.18",
+    "@types/morgan": "^1.9.6",
+    "@types/node": "^20.8.4",
+    "@types/pg": "^8.10.4",
+    "@typescript-eslint/eslint-plugin": "^6.7.5",
+    "@typescript-eslint/parser": "^6.7.5",
+    "dotenv": "^16.3.1",
+    "eslint": "^8.51.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^14.0.1",
+    "nodemon": "^3.0.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
+  },
+  "optionalDependencies": {
+    "bufferutil": "^4.0.7",
+    "utf-8-validate": "^6.0.3"
+  }
+}
